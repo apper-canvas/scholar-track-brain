@@ -51,8 +51,25 @@ setFormData({
 
 const handleChange = (e) => {
     const { name, value } = e.target;
-// Ensure value is always a string to prevent object stringification
-    const stringValue = typeof value === 'object' && value !== null ? '' : String(value || '');
+    
+    // Robust value conversion to prevent object stringification
+    let stringValue = '';
+    
+    if (value === null || value === undefined) {
+      stringValue = '';
+    } else if (typeof value === 'string') {
+      stringValue = value;
+    } else if (typeof value === 'number' || typeof value === 'boolean') {
+      stringValue = String(value);
+    } else if (typeof value === 'object') {
+      // Handle objects, arrays, etc. by converting to empty string
+      // This prevents [object Object] errors
+      stringValue = '';
+    } else {
+      // Fallback for any other types
+      stringValue = String(value || '');
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: stringValue
