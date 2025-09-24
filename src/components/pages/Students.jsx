@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import SearchBar from "@/components/molecules/SearchBar";
-import ActionButton from "@/components/molecules/ActionButton";
-import StudentTable from "@/components/organisms/StudentTable";
-import StudentModal from "@/components/organisms/StudentModal";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
-import FormField from "@/components/molecules/FormField";
+import React, { useEffect, useState } from "react";
 import { studentService } from "@/services/api/studentService";
 import { toast } from "react-toastify";
+import ActionButton from "@/components/molecules/ActionButton";
+import SearchBar from "@/components/molecules/SearchBar";
+import FormField from "@/components/molecules/FormField";
+import Loading from "@/components/ui/Loading";
+import Empty from "@/components/ui/Empty";
+import Error from "@/components/ui/Error";
+import StudentModal from "@/components/organisms/StudentModal";
+import StudentTable from "@/components/organisms/StudentTable";
+import Grades from "@/components/pages/Grades";
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -20,6 +21,7 @@ const Students = () => {
   const [gradeFilter, setGradeFilter] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [isViewMode, setIsViewMode] = useState(false);
 
   const loadStudents = async () => {
     try {
@@ -47,184 +49,164 @@ const Students = () => {
     // Search filter
     if (searchTerm) {
       filtered = filtered.filter(student =>
-        `${student.firstName} ${student.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        student.email.toLowerCase().includes(searchTerm.toLowerCase())
+        `${student.first_name_c} ${student.last_name_c}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.email_c?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
     // Status filter
     if (statusFilter !== "all") {
-      filtered = filtered.filter(student => student.status.toLowerCase() === statusFilter);
+      filtered = filtered.filter(student => student.status_c?.toLowerCase() === statusFilter);
     }
 
     // Grade filter
     if (gradeFilter !== "all") {
-      filtered = filtered.filter(student => student.grade === gradeFilter);
+      filtered = filtered.filter(student => student.grade_c?.toLowerCase() === gradeFilter);
     }
 
-    setFilteredStudents(filtered);
+    const sorted = filtered.sort((a, b) => {
+      const aName = `${a.first_name_c} ${a.last_name_c}`;
+      const bName = `${b.first_name_c} ${b.last_name_c}`;
+      return aName.localeCompare(bName);
+    });
+
+    setFilteredStudents(sorted);
   }, [students, searchTerm, statusFilter, gradeFilter]);
 
   const handleAddStudent = () => {
     setSelectedStudent(null);
+    setIsViewMode(false);
     setIsModalOpen(true);
   };
 
   const handleEditStudent = (student) => {
     setSelectedStudent(student);
+    setIsViewMode(false);
     setIsModalOpen(true);
   };
 
   const handleDeleteStudent = async (studentId) => {
-    if (window.confirm("Are you sure you want to delete this student?")) {
-      try {
-        await studentService.delete(studentId);
-        toast.success("Student deleted successfully!");
-        loadStudents();
-      } catch (err) {
-        toast.error("Failed to delete student. Please try again.");
-      }
+    if (!window.confirm("Are you sure you want to delete this student?")) {
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await studentService.delete(studentId);
+      toast.success("Student deleted successfully!");
+      loadStudents();
+    } catch (error) {
+      console.error("Error deleting student:", error);
+      toast.error("Failed to delete student");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleViewStudent = (student) => {
-    // For now, just open edit modal
-    handleEditStudent(student);
+    setSelectedStudent(student);
+    setIsViewMode(true);
+    setIsModalOpen(true);
   };
 
   const handleSaveStudent = async (formData) => {
     try {
+      setLoading(true);
       if (selectedStudent) {
-        await studentService.update(selectedStudent.Id, formData);
+        await studentService.update(selectedStudent.Id, {
+          first_name_c: formData.firstName,
+          last_name_c: formData.lastName,
+          email_c: formData.email,
+          phone_c: formData.phone,
+          grade_c: formData.grade,
+          status_c: formData.status
+        });
         toast.success("Student updated successfully!");
       } else {
         await studentService.create({
-          ...formData,
-          enrollmentDate: new Date().toISOString(),
-          parentContact: {
-            name: "",
-            phone: "",
-            email: ""
-          }
+          first_name_c: formData.firstName,
+          last_name_c: formData.lastName,
+          email_c: formData.email,
+          phone_c: formData.phone,
+          grade_c: formData.grade,
+          status_c: formData.status,
+          enrollment_date_c: new Date().toISOString()
         });
-        toast.success("Student added successfully!");
+        toast.success("Student created successfully!");
       }
-      setIsModalOpen(false);
       loadStudents();
-    } catch (err) {
-      toast.error(selectedStudent ? "Failed to update student." : "Failed to add student.");
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error saving student:", error);
+      toast.error("Failed to save student");
+    } finally {
+      setLoading(false);
     }
   };
+const statusOptions = ["all", "active", "inactive", "graduated"];
+  const gradeOptions = ["all", "9th", "10th", "11th", "12th"];
 
-  if (loading) {
-    return (
-      <div className="p-6">
-        <div className="mb-6">
-          <div className="h-8 bg-gray-200 rounded w-48 animate-pulse mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-64 animate-pulse"></div>
-        </div>
-        <Loading rows={8} showHeader={true} />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="p-6">
-        <Error message={error} onRetry={loadStudents} />
-      </div>
-    );
-  }
+  if (loading && students.length === 0) return <Loading />;
+  if (error) return <Error message={error} onRetry={loadStudents} />;
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold gradient-text mb-2">
-          Student Management
-        </h1>
-        <p className="text-gray-600">
-          Manage student profiles, enrollment, and status information.
-        </p>
-      </div>
-
-      {/* Filters and Actions */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div className="flex flex-col sm:flex-row gap-4 flex-1">
-          <SearchBar
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search students..."
-            className="flex-1 max-w-md"
-          />
-          
-          <div className="flex gap-4">
-            <FormField
-              type="select"
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-32"
-            >
-              <option value="all">All Status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="graduated">Graduated</option>
-            </FormField>
-            
-            <FormField
-              type="select"
-              value={gradeFilter}
-              onChange={(e) => setGradeFilter(e.target.value)}
-              className="w-32"
-            >
-              <option value="all">All Grades</option>
-              <option value="9th">9th Grade</option>
-              <option value="10th">10th Grade</option>
-              <option value="11th">11th Grade</option>
-              <option value="12th">12th Grade</option>
-            </FormField>
-          </div>
-        </div>
-        
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="text-3xl font-bold text-gray-900">Students</h1>
         <ActionButton
           icon="UserPlus"
           onClick={handleAddStudent}
-          variant="primary"
+          disabled={loading}
         >
           Add Student
         </ActionButton>
       </div>
 
-      {/* Results Summary */}
-      <div className="flex items-center justify-between text-sm text-gray-600">
-        <span>
-          Showing {filteredStudents.length} of {students.length} students
-        </span>
-        {(searchTerm || statusFilter !== "all" || gradeFilter !== "all") && (
-          <button
-            onClick={() => {
-              setSearchTerm("");
-              setStatusFilter("all");
-              setGradeFilter("all");
-            }}
-            className="text-primary-600 hover:text-primary-700"
-          >
-            Clear filters
-          </button>
-        )}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <SearchBar
+          value={searchTerm}
+          onChange={setSearchTerm}
+          placeholder="Search students..."
+          className="md:col-span-2"
+        />
+        
+        <FormField
+          label="Status"
+          type="select"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          className="w-full"
+        >
+          {statusOptions.map(status => (
+            <option key={status} value={status}>
+              {status.charAt(0).toUpperCase() + status.slice(1)}
+            </option>
+          ))}
+        </FormField>
+
+        <FormField
+          label="Grade"
+          type="select"
+          value={gradeFilter}
+          onChange={(e) => setGradeFilter(e.target.value)}
+          className="w-full"
+        >
+          {gradeOptions.map(grade => (
+            <option key={grade} value={grade}>
+              {grade === "all" ? "All Grades" : grade}
+            </option>
+          ))}
+        </FormField>
       </div>
 
-      {/* Students Table */}
       {filteredStudents.length === 0 ? (
-        <Empty
+        <Empty 
           title="No students found"
-          description={searchTerm || statusFilter !== "all" || gradeFilter !== "all" 
-            ? "Try adjusting your search criteria or filters."
-            : "Get started by adding your first student to the system."
-          }
-          icon="Users"
-          action={!searchTerm && statusFilter === "all" && gradeFilter === "all" ? handleAddStudent : undefined}
-          actionLabel="Add First Student"
+          description="No students match your current filters."
+          action={{
+            label: "Add Student",
+            onClick: handleAddStudent
+          }}
         />
       ) : (
         <StudentTable
@@ -235,12 +217,16 @@ const Students = () => {
         />
       )}
 
-      {/* Student Modal */}
       <StudentModal
         student={selectedStudent}
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          setIsModalOpen(false);
+          setSelectedStudent(null);
+          setIsViewMode(false);
+        }}
         onSave={handleSaveStudent}
+        isViewMode={isViewMode}
       />
     </div>
   );

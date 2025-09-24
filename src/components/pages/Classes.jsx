@@ -314,15 +314,15 @@ const Classes = () => {
                 <div className={`${viewMode === "list" ? "flex items-center space-x-6" : "space-y-3"}`}>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">
-                      {cls.name}
+{cls.name_c || cls.name}
                     </h3>
-                    <p className="text-sm text-gray-600">{cls.subject}</p>
+                    <p className="text-sm text-gray-600">{cls.subject_c || cls.subject}</p>
                   </div>
                   
                   {viewMode === "list" && (
                     <>
                       <div className="text-sm text-gray-600">
-                        <p><span className="font-medium">Teacher:</span> {cls.teacher}</p>
+                        <p><span className="font-medium">Teacher:</span> {cls.teacher_c || cls.teacher}</p>
                         <p><span className="font-medium">Room:</span> {cls.schedule?.room || "TBD"}</p>
                       </div>
                       
@@ -346,8 +346,8 @@ const Classes = () => {
                 
                 {viewMode === "grid" && (
                   <>
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <p><span className="font-medium">Teacher:</span> {cls.teacher}</p>
+<div className="space-y-2 text-sm text-gray-600">
+                      <p><span className="font-medium">Teacher:</span> {cls.teacher_c || cls.teacher}</p>
                       <p><span className="font-medium">Room:</span> {cls.schedule?.room || "TBD"}</p>
                       <p><span className="font-medium">Schedule:</span> {cls.schedule?.days?.join(", ") || "TBD"}</p>
                       {cls.schedule?.startTime && cls.schedule?.endTime && (

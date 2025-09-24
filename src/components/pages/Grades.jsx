@@ -215,7 +215,7 @@ const Grades = () => {
           icon="BookOpen"
           actionLabel="Go to Classes"
         />
-      ) : students.filter(s => s.status === "Active").length === 0 ? (
+) : students.filter(s => s.status_c === "Active").length === 0 ? (
         <Empty
           title="No active students"
           description="You need active students to enter grades."
@@ -248,7 +248,7 @@ const Grades = () => {
               .sort((a, b) => new Date(b.date) - new Date(a.date))
               .slice(0, 8)
               .map((grade) => {
-                const student = students.find(s => s.Id === grade.studentId);
+const student = students.find(s => s.Id === grade.studentId);
                 const cls = classes.find(c => c.Id === grade.classId);
                 const percentage = ((grade.score / grade.maxScore) * 100).toFixed(1);
                 
@@ -257,12 +257,12 @@ const Grades = () => {
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center">
                         <span className="text-xs font-semibold text-primary-700">
-                          {student ? `${student.firstName[0]}${student.lastName[0]}` : "??"}
+{student ? `${student.first_name_c?.[0]}${student.last_name_c?.[0]}` : "??"}
                         </span>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-900">
-                          {student ? `${student.firstName} ${student.lastName}` : "Unknown Student"}
+<p className="text-sm font-medium text-gray-900">
+                          {student ? `${student.first_name_c} ${student.last_name_c}` : "Unknown Student"}
                         </p>
                         <p className="text-xs text-gray-500">
                           {cls ? `${cls.name} - ${grade.assignment}` : grade.assignment}

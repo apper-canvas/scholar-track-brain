@@ -52,12 +52,12 @@ const Attendance = () => {
   const handleAttendanceChange = async (studentId, date, status) => {
     try {
       const existingRecord = attendance.find(a => 
-        a.studentId === studentId && 
+a.studentId === studentId && 
         format(new Date(a.date), "yyyy-MM-dd") === format(date, "yyyy-MM-dd")
       );
 
       const attendanceData = {
-        studentId,
+studentId,
         classId: selectedClass,
         date: date.toISOString(),
         status,
@@ -107,7 +107,7 @@ const Attendance = () => {
   const getStudentAttendanceSummary = () => {
     const activeStudents = students.filter(s => s.status === "Active");
     return activeStudents.map(student => {
-      const studentAttendance = attendance.filter(a => a.studentId === student.Id);
+const studentAttendance = attendance.filter(a => a.studentId === student.Id);
       const totalDays = studentAttendance.length;
       const presentDays = studentAttendance.filter(a => a.status === "Present").length;
       const absentDays = studentAttendance.filter(a => a.status === "Absent").length;
@@ -259,11 +259,11 @@ const Attendance = () => {
                   <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center">
                       <span className="text-xs font-semibold text-primary-700">
-                        {student.firstName[0]}{student.lastName[0]}
+{student.first_name_c?.[0]}{student.last_name_c?.[0]}
                       </span>
                     </div>
                     <span className="text-sm font-medium text-gray-900">
-                      {student.firstName} {student.lastName}
+{student.first_name_c} {student.last_name_c}
                     </span>
                   </div>
                   <Badge 

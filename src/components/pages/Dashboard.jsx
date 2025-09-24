@@ -73,7 +73,7 @@ const Dashboard = () => {
   }
 
   // Calculate statistics
-  const activeStudents = students.filter(s => s.status === "Active");
+const activeStudents = students.filter(s => s.status_c === "Active");
   const totalClasses = classes.length;
   
   // Today's attendance
@@ -191,8 +191,8 @@ const Dashboard = () => {
                         className={`w-5 h-5 ${getActivityColor(record.status)}`}
                       />
                       <div>
-                        <p className="text-sm font-medium text-gray-900">
-                          {student ? `${student.firstName} ${student.lastName}` : "Unknown Student"}
+<p className="text-sm font-medium text-gray-900">
+                          {student ? `${student.first_name_c} ${student.last_name_c}` : "Unknown Student"}
                         </p>
                         <p className="text-xs text-gray-500">
                           {format(new Date(record.date), "MMM d, h:mm a")}

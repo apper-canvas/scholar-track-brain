@@ -52,29 +52,29 @@ const StudentTable = ({ students, onEdit, onDelete, onView }) => {
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center mr-4">
                       <span className="text-sm font-semibold text-primary-700">
-                        {student.firstName[0]}{student.lastName[0]}
+{student.first_name_c?.[0]}{student.last_name_c?.[0]}
                       </span>
                     </div>
                     <div>
                       <div className="text-sm font-medium text-gray-900">
-                        {student.firstName} {student.lastName}
+                        {student.first_name_c} {student.last_name_c}
                       </div>
-                      <div className="text-sm text-gray-500">{student.email}</div>
+                      <div className="text-sm text-gray-500">{student.email_c}</div>
                     </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="text-sm font-semibold text-gray-900">
-                    {student.grade}
+{student.grade_c}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <Badge variant={getStatusColor(student.status)}>
-                    {student.status}
+<Badge variant={getStatusColor(student.status_c)}>
+                    {student.status_c}
                   </Badge>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {format(new Date(student.enrollmentDate), "MMM dd, yyyy")}
+<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {student.enrollment_date_c ? format(new Date(student.enrollment_date_c), "MMM dd, yyyy") : "N/A"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end space-x-2">

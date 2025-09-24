@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Card from "@/components/atoms/Card";
+import { addDays, format, isSameDay, startOfWeek } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
+import FormField from "@/components/molecules/FormField";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-import FormField from "@/components/molecules/FormField";
-import ApperIcon from "@/components/ApperIcon";
-import { format, startOfWeek, addDays, isSameDay } from "date-fns";
+import Card from "@/components/atoms/Card";
+import Attendance from "@/components/pages/Attendance";
 
 const AttendanceGrid = ({ 
   students, 
@@ -180,8 +181,8 @@ const AttendanceGrid = ({
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {students
-                  .filter(student => student.status === "Active")
+{students
+                  .filter(student => student.status_c === "Active")
                   .map(student => {
                     const weekAttendance = weekDays.map(day => 
                       getAttendanceStatus(student.Id, day)
@@ -194,18 +195,17 @@ const AttendanceGrid = ({
                         key={student.Id}
                         className="hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200"
                       >
-                        <td className="px-6 py-4 sticky left-0 bg-white">
+<td className="px-6 py-4 sticky left-0 bg-white">
                           <div className="flex items-center">
                             <div className="w-8 h-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center mr-3">
                               <span className="text-xs font-semibold text-primary-700">
-                                {student.firstName[0]}{student.lastName[0]}
+                                {student.first_name_c?.[0]}{student.last_name_c?.[0]}
                               </span>
                             </div>
-                            <span className="text-sm font-medium text-gray-900">
-                              {student.firstName} {student.lastName}
-                            </span>
+                            <div className="text-sm font-medium text-gray-900">
+                              {student.first_name_c} {student.last_name_c}
+                            </div>
                           </div>
-                        </td>
                         {weekDays.map(day => (
                           <td key={day.toISOString()} className="px-4 py-4 text-center">
                             <AttendanceButton

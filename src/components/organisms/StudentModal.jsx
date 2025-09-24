@@ -6,7 +6,7 @@ import ActionButton from "@/components/molecules/ActionButton";
 import ApperIcon from "@/components/ApperIcon";
 
 const StudentModal = ({ student, isOpen, onClose, onSave }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -17,13 +17,13 @@ const StudentModal = ({ student, isOpen, onClose, onSave }) => {
 
   useEffect(() => {
     if (student) {
-      setFormData({
-        firstName: student.firstName || "",
-        lastName: student.lastName || "",
-        email: student.email || "",
-        phone: student.phone || "",
-        grade: student.grade || "",
-        status: student.status || "Active"
+setFormData({
+        firstName: student.first_name_c || "",
+        lastName: student.last_name_c || "",
+        email: student.email_c || "",
+        phone: student.phone_c || "",
+        grade: student.grade_c || "",
+        status: student.status_c || "Active"
       });
     } else {
       setFormData({
