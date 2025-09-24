@@ -1,0 +1,116 @@
+[
+  {
+    "Id": 1,
+    "name": "Advanced Mathematics",
+    "subject": "Mathematics",
+    "teacher": "Dr. Sarah Mitchell",
+    "students": [1, 4, 6, 10],
+    "schedule": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "startTime": "09:00",
+      "endTime": "10:30",
+      "room": "Room 201"
+    },
+    "gradeWeights": {
+      "homework": 25,
+      "quizzes": 25,
+      "exams": 40,
+      "projects": 10
+    }
+  },
+  {
+    "Id": 2,
+    "name": "English Literature",
+    "subject": "English",
+    "teacher": "Ms. Jennifer Brooks",
+    "students": [1, 2, 3, 7, 9],
+    "schedule": {
+      "days": ["Tuesday", "Thursday"],
+      "startTime": "10:45",
+      "endTime": "12:15",
+      "room": "Room 105"
+    },
+    "gradeWeights": {
+      "homework": 20,
+      "quizzes": 15,
+      "exams": 35,
+      "projects": 30
+    }
+  },
+  {
+    "Id": 3,
+    "name": "Physics",
+    "subject": "Science",
+    "teacher": "Mr. David Kumar",
+    "students": [2, 4, 6, 8, 10],
+    "schedule": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "startTime": "13:30",
+      "endTime": "15:00",
+      "room": "Lab 301"
+    },
+    "gradeWeights": {
+      "homework": 20,
+      "quizzes": 20,
+      "exams": 50,
+      "projects": 10
+    }
+  },
+  {
+    "Id": 4,
+    "name": "World History",
+    "subject": "History",
+    "teacher": "Mrs. Lisa Rodriguez",
+    "students": [3, 5, 7, 9, 12],
+    "schedule": {
+      "days": ["Tuesday", "Thursday"],
+      "startTime": "08:00",
+      "endTime": "09:30",
+      "room": "Room 210"
+    },
+    "gradeWeights": {
+      "homework": 30,
+      "quizzes": 20,
+      "exams": 35,
+      "projects": 15
+    }
+  },
+  {
+    "Id": 5,
+    "name": "Chemistry",
+    "subject": "Science",
+    "teacher": "Dr. Michael Chang",
+    "students": [1, 3, 5, 6, 9],
+    "schedule": {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "startTime": "11:00",
+      "endTime": "12:30",
+      "room": "Lab 302"
+    },
+    "gradeWeights": {
+      "homework": 25,
+      "quizzes": 25,
+      "exams": 40,
+      "projects": 10
+    }
+  },
+  {
+    "Id": 6,
+    "name": "Spanish II",
+    "subject": "Language",
+    "teacher": "Señora Ana Martinez",
+    "students": [2, 5, 7, 10, 12],
+    "schedule": {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "startTime": "14:00",
+      "endTime": "14:50",
+      "room": "Room 108"
+    },
+    "gradeWeights": {
+      "homework": 35,
+      "quizzes": 30,
+      "exams": 25,
+      "projects": 10
+    }
+  }
+]

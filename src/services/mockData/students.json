@@ -1,0 +1,182 @@
+[
+  {
+    "Id": 1,
+    "firstName": "Emma",
+    "lastName": "Johnson",
+    "email": "emma.johnson@email.com",
+    "phone": "(555) 123-4567",
+    "grade": "12th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Sarah Johnson",
+      "phone": "(555) 123-4568",
+      "email": "sarah.johnson@email.com"
+    }
+  },
+  {
+    "Id": 2,
+    "firstName": "Michael",
+    "lastName": "Chen",
+    "email": "michael.chen@email.com",
+    "phone": "(555) 234-5678",
+    "grade": "11th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Lisa Chen",
+      "phone": "(555) 234-5679",
+      "email": "lisa.chen@email.com"
+    }
+  },
+  {
+    "Id": 3,
+    "firstName": "Sofia",
+    "lastName": "Rodriguez",
+    "email": "sofia.rodriguez@email.com",
+    "phone": "(555) 345-6789",
+    "grade": "10th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Maria Rodriguez",
+      "phone": "(555) 345-6790",
+      "email": "maria.rodriguez@email.com"
+    }
+  },
+  {
+    "Id": 4,
+    "firstName": "James",
+    "lastName": "Wilson",
+    "email": "james.wilson@email.com",
+    "phone": "(555) 456-7890",
+    "grade": "12th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Robert Wilson",
+      "phone": "(555) 456-7891",
+      "email": "robert.wilson@email.com"
+    }
+  },
+  {
+    "Id": 5,
+    "firstName": "Olivia",
+    "lastName": "Davis",
+    "email": "olivia.davis@email.com",
+    "phone": "(555) 567-8901",
+    "grade": "9th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Jennifer Davis",
+      "phone": "(555) 567-8902",
+      "email": "jennifer.davis@email.com"
+    }
+  },
+  {
+    "Id": 6,
+    "firstName": "Alexander",
+    "lastName": "Brown",
+    "email": "alexander.brown@email.com",
+    "phone": "(555) 678-9012",
+    "grade": "11th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Michelle Brown",
+      "phone": "(555) 678-9013",
+      "email": "michelle.brown@email.com"
+    }
+  },
+  {
+    "Id": 7,
+    "firstName": "Isabella",
+    "lastName": "Garcia",
+    "email": "isabella.garcia@email.com",
+    "phone": "(555) 789-0123",
+    "grade": "10th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Carmen Garcia",
+      "phone": "(555) 789-0124",
+      "email": "carmen.garcia@email.com"
+    }
+  },
+  {
+    "Id": 8,
+    "firstName": "William",
+    "lastName": "Miller",
+    "email": "william.miller@email.com",
+    "phone": "(555) 890-1234",
+    "grade": "12th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Inactive",
+    "parentContact": {
+      "name": "Patricia Miller",
+      "phone": "(555) 890-1235",
+      "email": "patricia.miller@email.com"
+    }
+  },
+  {
+    "Id": 9,
+    "firstName": "Ava",
+    "lastName": "Taylor",
+    "email": "ava.taylor@email.com",
+    "phone": "(555) 901-2345",
+    "grade": "9th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Kevin Taylor",
+      "phone": "(555) 901-2346",
+      "email": "kevin.taylor@email.com"
+    }
+  },
+  {
+    "Id": 10,
+    "firstName": "Ethan",
+    "lastName": "Anderson",
+    "email": "ethan.anderson@email.com",
+    "phone": "(555) 012-3456",
+    "grade": "11th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Laura Anderson",
+      "phone": "(555) 012-3457",
+      "email": "laura.anderson@email.com"
+    }
+  },
+  {
+    "Id": 11,
+    "firstName": "Mia",
+    "lastName": "Thomas",
+    "email": "mia.thomas@email.com",
+    "phone": "(555) 123-4567",
+    "grade": "10th",
+    "enrollmentDate": "2022-08-15T00:00:00.000Z",
+    "status": "Graduated",
+    "parentContact": {
+      "name": "David Thomas",
+      "phone": "(555) 123-4568",
+      "email": "david.thomas@email.com"
+    }
+  },
+  {
+    "Id": 12,
+    "firstName": "Noah",
+    "lastName": "Jackson",
+    "email": "noah.jackson@email.com",
+    "phone": "(555) 234-5679",
+    "grade": "9th",
+    "enrollmentDate": "2023-08-15T00:00:00.000Z",
+    "status": "Active",
+    "parentContact": {
+      "name": "Angela Jackson",
+      "phone": "(555) 234-5680",
+      "email": "angela.jackson@email.com"
+    }
+  }
+]

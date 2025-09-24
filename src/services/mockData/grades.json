@@ -1,0 +1,202 @@
+[
+  {
+    "Id": 1,
+    "studentId": 1,
+    "classId": 1,
+    "assignment": "Quiz 1",
+    "score": 23,
+    "maxScore": 25,
+    "category": "Quiz",
+    "date": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "Id": 2,
+    "studentId": 1,
+    "classId": 1,
+    "assignment": "Homework 1",
+    "score": 47,
+    "maxScore": 50,
+    "category": "Homework",
+    "date": "2024-01-18T10:00:00.000Z"
+  },
+  {
+    "Id": 3,
+    "studentId": 1,
+    "classId": 2,
+    "assignment": "Essay 1",
+    "score": 85,
+    "maxScore": 100,
+    "category": "Project",
+    "date": "2024-01-20T10:00:00.000Z"
+  },
+  {
+    "Id": 4,
+    "studentId": 2,
+    "classId": 2,
+    "assignment": "Quiz 1",
+    "score": 18,
+    "maxScore": 20,
+    "category": "Quiz",
+    "date": "2024-01-16T10:00:00.000Z"
+  },
+  {
+    "Id": 5,
+    "studentId": 2,
+    "classId": 3,
+    "assignment": "Lab Report 1",
+    "score": 78,
+    "maxScore": 100,
+    "category": "Project",
+    "date": "2024-01-19T10:00:00.000Z"
+  },
+  {
+    "Id": 6,
+    "studentId": 3,
+    "classId": 2,
+    "assignment": "Reading Quiz",
+    "score": 16,
+    "maxScore": 20,
+    "category": "Quiz",
+    "date": "2024-01-17T10:00:00.000Z"
+  },
+  {
+    "Id": 7,
+    "studentId": 3,
+    "classId": 4,
+    "assignment": "Midterm Exam",
+    "score": 88,
+    "maxScore": 100,
+    "category": "Exam",
+    "date": "2024-01-22T10:00:00.000Z"
+  },
+  {
+    "Id": 8,
+    "studentId": 4,
+    "classId": 1,
+    "assignment": "Quiz 1",
+    "score": 22,
+    "maxScore": 25,
+    "category": "Quiz",
+    "date": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "Id": 9,
+    "studentId": 4,
+    "classId": 3,
+    "assignment": "Problem Set 1",
+    "score": 42,
+    "maxScore": 50,
+    "category": "Homework",
+    "date": "2024-01-18T10:00:00.000Z"
+  },
+  {
+    "Id": 10,
+    "studentId": 5,
+    "classId": 4,
+    "assignment": "Timeline Project",
+    "score": 92,
+    "maxScore": 100,
+    "category": "Project",
+    "date": "2024-01-21T10:00:00.000Z"
+  },
+  {
+    "Id": 11,
+    "studentId": 5,
+    "classId": 5,
+    "assignment": "Lab Quiz",
+    "score": 19,
+    "maxScore": 25,
+    "category": "Quiz",
+    "date": "2024-01-19T10:00:00.000Z"
+  },
+  {
+    "Id": 12,
+    "studentId": 6,
+    "classId": 1,
+    "assignment": "Homework 1",
+    "score": 45,
+    "maxScore": 50,
+    "category": "Homework",
+    "date": "2024-01-18T10:00:00.000Z"
+  },
+  {
+    "Id": 13,
+    "studentId": 6,
+    "classId": 3,
+    "assignment": "Quiz 2",
+    "score": 17,
+    "maxScore": 20,
+    "category": "Quiz",
+    "date": "2024-01-23T10:00:00.000Z"
+  },
+  {
+    "Id": 14,
+    "studentId": 7,
+    "classId": 2,
+    "assignment": "Vocabulary Test",
+    "score": 27,
+    "maxScore": 30,
+    "category": "Quiz",
+    "date": "2024-01-17T10:00:00.000Z"
+  },
+  {
+    "Id": 15,
+    "studentId": 7,
+    "classId": 4,
+    "assignment": "Research Paper",
+    "score": 87,
+    "maxScore": 100,
+    "category": "Project",
+    "date": "2024-01-24T10:00:00.000Z"
+  },
+  {
+    "Id": 16,
+    "studentId": 9,
+    "classId": 2,
+    "assignment": "Book Report",
+    "score": 79,
+    "maxScore": 100,
+    "category": "Project",
+    "date": "2024-01-25T10:00:00.000Z"
+  },
+  {
+    "Id": 17,
+    "studentId": 9,
+    "classId": 4,
+    "assignment": "Chapter Test",
+    "score": 34,
+    "maxScore": 40,
+    "category": "Exam",
+    "date": "2024-01-26T10:00:00.000Z"
+  },
+  {
+    "Id": 18,
+    "studentId": 10,
+    "classId": 1,
+    "assignment": "Problem Set 2",
+    "score": 38,
+    "maxScore": 50,
+    "category": "Homework",
+    "date": "2024-01-20T10:00:00.000Z"
+  },
+  {
+    "Id": 19,
+    "studentId": 10,
+    "classId": 3,
+    "assignment": "Midterm Exam",
+    "score": 84,
+    "maxScore": 100,
+    "category": "Exam",
+    "date": "2024-01-27T10:00:00.000Z"
+  },
+  {
+    "Id": 20,
+    "studentId": 12,
+    "classId": 4,
+    "assignment": "Map Quiz",
+    "score": 14,
+    "maxScore": 15,
+    "category": "Quiz",
+    "date": "2024-01-16T10:00:00.000Z"
+  }
+]
