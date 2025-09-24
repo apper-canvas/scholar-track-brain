@@ -1,5 +1,4 @@
 import { toast } from "react-toastify";
-import React from "react";
 
 const { ApperClient } = window.ApperSDK;
 
@@ -203,7 +202,7 @@ failed.forEach(record => {
         if (failed.length > 0) {
           console.error(`Failed to update ${failed.length} records:`, failed);
           failed.forEach(record => {
-            record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error}`));
+record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error.message}`));
             if (record.message) toast.error(record.message);
           });
         }
