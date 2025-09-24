@@ -51,8 +51,8 @@ setFormData({
 
 const handleChange = (e) => {
     const { name, value } = e.target;
-    // Ensure value is always a string to prevent object stringification
-    const stringValue = typeof value === 'object' ? '' : String(value || '');
+// Ensure value is always a string to prevent object stringification
+    const stringValue = typeof value === 'object' && value !== null ? '' : String(value || '');
     setFormData(prev => ({
       ...prev,
       [name]: stringValue

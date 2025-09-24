@@ -117,8 +117,8 @@ async create(studentData) {
         
         if (failed.length > 0) {
           console.error(`Failed to create ${failed.length} records:`, failed);
-          failed.forEach(record => {
-record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error.message}`));
+failed.forEach(record => {
+            record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error}`));
             if (record.message) toast.error(record.message);
           });
         }
@@ -166,7 +166,7 @@ record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error.messag
         
         if (failed.length > 0) {
           console.error(`Failed to update ${failed.length} records:`, failed);
-          failed.forEach(record => {
+failed.forEach(record => {
             record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error}`));
             if (record.message) toast.error(record.message);
           });
