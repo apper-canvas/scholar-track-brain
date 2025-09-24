@@ -206,6 +206,7 @@ const AttendanceGrid = ({
                               {student.first_name_c} {student.last_name_c}
                             </div>
                           </div>
+                        </td>
                         {weekDays.map(day => (
                           <td key={day.toISOString()} className="px-4 py-4 text-center">
                             <AttendanceButton
