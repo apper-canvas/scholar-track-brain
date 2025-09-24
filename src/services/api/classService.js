@@ -154,7 +154,7 @@ export const classService = {
         if (failed.length > 0) {
           console.error(`Failed to create ${failed.length} records:`, failed);
 failed.forEach(record => {
-            record.errors?.forEach(error => toast.error(error));
+            record.errors?.forEach(error => toast.error(`${error.fieldLabel}: ${error.message}`));
             if (record.message) toast.error(record.message);
           });
         }

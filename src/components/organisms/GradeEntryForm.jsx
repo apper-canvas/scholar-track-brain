@@ -138,11 +138,10 @@ const GradeEntryForm = ({
                                             </span>
                                         </div>
                                         <span className="text-sm font-medium text-gray-900">
-                                            {student.firstName} {student.lastName}
+{student.first_name_c} {student.last_name_c}
                                         </span>
                                     </div>
                                     <div className="text-sm font-medium text-gray-900">
-                                        {student.first_name_c} {student.last_name_c}
                                         <input
                                             type="number"
                                             min="0"

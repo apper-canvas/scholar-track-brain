@@ -105,7 +105,7 @@ studentId,
   };
 
   const getStudentAttendanceSummary = () => {
-    const activeStudents = students.filter(s => s.status === "Active");
+const activeStudents = students.filter(s => s.status_c === "Active" || s.status === "Active");
     return activeStudents.map(student => {
 const studentAttendance = attendance.filter(a => a.studentId === student.Id);
       const totalDays = studentAttendance.length;
@@ -224,7 +224,7 @@ const studentAttendance = attendance.filter(a => a.studentId === student.Id);
           icon="BookOpen"
           actionLabel="Go to Classes"
         />
-      ) : students.filter(s => s.status === "Active").length === 0 ? (
+) : students.filter(s => s.status_c === "Active" || s.status === "Active").length === 0 ? (
         <Empty
           title="No active students"
           description="You need active students to track attendance."

@@ -133,7 +133,7 @@ await studentService.update(selectedStudent.Id, {
           email_c: formData.email,
           phone_c: formData.phone,
           grade_c: formData.grade,
-          status_c: formData.status,
+status_c: formData.status_c || formData.status,
           enrollment_date_c: new Date().toISOString()
         });
         toast.success("Student created successfully!");
