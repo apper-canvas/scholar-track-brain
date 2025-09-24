@@ -49,11 +49,13 @@ setFormData({
     }
   }, [student, isOpen]);
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
     const { name, value } = e.target;
+    // Ensure value is always a string to prevent object stringification
+    const stringValue = typeof value === 'object' ? '' : String(value || '');
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: stringValue
     }));
   };
 
