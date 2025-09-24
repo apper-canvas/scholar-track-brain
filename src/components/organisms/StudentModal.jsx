@@ -12,7 +12,11 @@ const [formData, setFormData] = useState({
     email: "",
     phone: "",
     grade: "",
-    status: "Active"
+    status: "Active",
+    enrollmentDate: "",
+    parentContactName: "",
+    parentContactPhone: "",
+    parentContactEmail: ""
   });
 
   useEffect(() => {
@@ -23,16 +27,24 @@ setFormData({
         email: student.email_c || "",
         phone: student.phone_c || "",
         grade: student.grade_c || "",
-        status: student.status_c || "Active"
+        status: student.status_c || "Active",
+        enrollmentDate: student.enrollment_date_c ? student.enrollment_date_c.split('T')[0] : "",
+        parentContactName: student.parent_contact_name_c || "",
+        parentContactPhone: student.parent_contact_phone_c || "",
+        parentContactEmail: student.parent_contact_email_c || ""
       });
     } else {
-      setFormData({
+setFormData({
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
         grade: "",
-        status: "Active"
+        status: "Active",
+        enrollmentDate: "",
+        parentContactName: "",
+        parentContactPhone: "",
+        parentContactEmail: ""
       });
     }
   }, [student, isOpen]);
@@ -131,6 +143,49 @@ setFormData({
                 <option value="Inactive">Inactive</option>
                 <option value="Graduated">Graduated</option>
               </FormField>
+</div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FormField
+                label="Enrollment Date"
+                type="date"
+                name="enrollmentDate"
+                value={formData.enrollmentDate}
+                onChange={handleChange}
+                placeholder="Select enrollment date"
+              />
+            </div>
+
+            <div className="border-t border-gray-200 pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Parent/Guardian Contact Information</h3>
+              
+              <div className="space-y-6">
+                <FormField
+                  label="Parent/Guardian Name"
+                  name="parentContactName"
+                  value={formData.parentContactName}
+                  onChange={handleChange}
+                  placeholder="Enter parent/guardian name"
+                />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    label="Parent/Guardian Phone"
+                    name="parentContactPhone"
+                    value={formData.parentContactPhone}
+                    onChange={handleChange}
+                    placeholder="(555) 123-4567"
+                  />
+                  <FormField
+                    label="Parent/Guardian Email"
+                    type="email"
+                    name="parentContactEmail"
+                    value={formData.parentContactEmail}
+                    onChange={handleChange}
+                    placeholder="parent@email.com"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">

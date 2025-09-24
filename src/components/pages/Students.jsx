@@ -113,13 +113,17 @@ const Students = () => {
     try {
       setLoading(true);
       if (selectedStudent) {
-        await studentService.update(selectedStudent.Id, {
+await studentService.update(selectedStudent.Id, {
           first_name_c: formData.firstName,
           last_name_c: formData.lastName,
           email_c: formData.email,
           phone_c: formData.phone,
           grade_c: formData.grade,
-          status_c: formData.status
+          status_c: formData.status,
+          enrollment_date_c: formData.enrollmentDate ? new Date(formData.enrollmentDate).toISOString() : undefined,
+          parent_contact_name_c: formData.parentContactName,
+          parent_contact_phone_c: formData.parentContactPhone,
+          parent_contact_email_c: formData.parentContactEmail
         });
         toast.success("Student updated successfully!");
       } else {

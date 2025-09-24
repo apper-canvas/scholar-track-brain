@@ -76,8 +76,17 @@ export const studentService = {
     }
   },
 
-  async create(studentData) {
+async create(studentData) {
     try {
+      // Validate required fields
+      if (!studentData.first_name_c || !studentData.last_name_c) {
+        throw new Error('First name and last name are required');
+      }
+      
+      if (studentData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(studentData.email_c)) {
+        throw new Error('Please enter a valid email address');
+      }
+
       const params = {
         records: [{
           Name: `${studentData.first_name_c} ${studentData.last_name_c}`,
