@@ -129,30 +129,32 @@ const GradeEntryForm = ({
                             <tr
                                 key={student.Id}
                                 className="hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200">
-                                <td className="px-6 py-4">
+<td className="px-6 py-4">
                                     <div className="flex items-center">
-                                        <div
+                                        <div 
                                             className="w-8 h-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full flex items-center justify-center mr-3">
                                             <span className="text-xs font-semibold text-primary-700">
                                                 {student.first_name_c?.[0]}{student.last_name_c?.[0]}
                                             </span>
                                         </div>
                                         <span className="text-sm font-medium text-gray-900">
-{student.first_name_c} {student.last_name_c}
+                                            {student.first_name_c} {student.last_name_c}
                                         </span>
                                     </div>
-                                    <div className="text-sm font-medium text-gray-900">
-                                        <input
-                                            type="number"
-                                            min="0"
-                                            max={maxScore}
-                                            value={score}
-                                            onChange={e => handleGradeUpdate(student.Id, e.target.value)}
-                                            className="w-20 px-2 py-1 text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                                            placeholder="0" />
-                                        <span className="text-sm text-gray-500 ml-1">/ {maxScore}
-                                        </span>
-                                    </div></td>
+                                </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm font-medium text-gray-900">
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    max={maxScore}
+                                                    value={score}
+                                                    onChange={e => handleGradeUpdate(student.Id, e.target.value)}
+                                                    className="w-20 px-2 py-1 text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                                                    placeholder="0" />
+                                                <span className="text-sm text-gray-500 ml-1">/ {maxScore}</span>
+                                            </div>
+                                        </td>
                                 <td className="px-6 py-4 text-center">
                                     <span className="text-sm font-medium text-gray-900">
                                         {score ? `${percentage.toFixed(1)}%` : "-"}
